@@ -36,7 +36,7 @@ public class OperadorServiceImpl  implements OperadorService {
 
     @Override
     public Optional<Operador> operadorId(Integer id) {
-        return Optional.empty();
+        return operadorRepository.findById(id);
     }
 
     @Override

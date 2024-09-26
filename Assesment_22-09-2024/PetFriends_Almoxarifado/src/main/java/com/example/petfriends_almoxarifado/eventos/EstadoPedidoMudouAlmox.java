@@ -13,6 +13,7 @@ public class EstadoPedidoMudouAlmox implements Serializable {
     private Date momento;
     
     public EstadoPedidoMudouAlmox() {
+
     }
 
     public EstadoPedidoMudouAlmox(Integer idPedido, PedidoStatus estado) {

@@ -2,7 +2,6 @@ package com.example.petfriends_almoxarifado.service;
 
 import com.example.petfriends_almoxarifado.model.Separacao;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

@@ -21,7 +21,7 @@ public class Expedicao {
     private Operador codOperador;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transportadora_id", referencedColumnName = "id")
-    private Transportadora transportadora;
+    private Transporte transportadora;
     @Column(name = "CODIGO_RASTREIO")
     private String codigoRastreio;
     @Column(name = "STATUS")
@@ -35,7 +35,7 @@ public class Expedicao {
 
 
 //    public Expedicao(int idPedido, QtdeVolume qtdeVolume, Operador codOperador,
-//                     Transportadora transportadora, String codigoRastreio, PedidoStatus pedidoStatus) {
+//                     Transporte transportadora, String codigoRastreio, PedidoStatus pedidoStatus) {
 //        this.idPedido = idPedido;
 //        this.qtdeVolume = qtdeVolume;
 //        this.codOperador = codOperador;

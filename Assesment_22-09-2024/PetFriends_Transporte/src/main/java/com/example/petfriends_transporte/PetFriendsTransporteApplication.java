@@ -2,10 +2,6 @@ package com.example.petfriends_transporte;
 
 import com.example.petfriends_transporte.enumerate.PedidoStatus;
 import com.example.petfriends_transporte.eventos.EstadoPedidoMudouTransportadora;
-import com.example.petfriends_transporte.model.Expedicao;
-import com.example.petfriends_transporte.model.Operador;
-import com.example.petfriends_transporte.model.QtdeVolume;
-import com.example.petfriends_transporte.model.Transportadora;
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.support.converter.JacksonPubSubMessageConverter;
 import lombok.extern.slf4j.Slf4j;

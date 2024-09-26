@@ -37,19 +37,12 @@ public class ExpedicaoServiceImpl implements ExpedicaoService {
 
     @Override
     public Optional<Expedicao> expedicaoId(Integer id) {
-        return Optional.empty();
+
+        return expedicaoRepository.findById(id);
     }
 
     @Override
     public void salva(Expedicao expedicao) {
-
-//
-//
-        pubSubTemplate.setMessageConverter(converter);
-        pubSubTemplate.publish("topic-almoxarifado", expedicao);
-        log.info("***** Mensagem Publicada ---> " + expedicao);
-
-
         expedicaoRepository.save(expedicao);
     }
 

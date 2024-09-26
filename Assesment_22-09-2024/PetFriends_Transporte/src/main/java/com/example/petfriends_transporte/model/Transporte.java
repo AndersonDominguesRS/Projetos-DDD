@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Transportadora {
+public class Transporte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +16,9 @@ public class Transportadora {
     private String nome;
     private String cnpj;
 
-    public Transportadora() {}
+    public Transporte() {}
 
-    public Transportadora(String nome, String cnpj) {
+    public Transporte(String nome, String cnpj) {
         this.nome = nome;
         this.cnpj = cnpj;
     }

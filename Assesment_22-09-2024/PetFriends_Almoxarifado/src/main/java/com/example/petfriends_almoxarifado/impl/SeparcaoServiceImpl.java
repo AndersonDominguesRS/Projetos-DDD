@@ -37,7 +37,7 @@ public class SeparcaoServiceImpl implements SeparacaoService {
 
     @Override
     public Optional<Separacao> separacaoId(Integer id) {
-        return Optional.empty();
+        return separacaoRepository.findById(id);
     }
 
     @Override

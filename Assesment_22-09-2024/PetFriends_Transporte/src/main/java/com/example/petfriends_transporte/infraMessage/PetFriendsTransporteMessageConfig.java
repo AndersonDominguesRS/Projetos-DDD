@@ -6,7 +6,6 @@ import com.example.petfriends_transporte.mesageDeserializer.TransporteDeserializ
 import com.example.petfriends_transporte.mesageSerializer.TransporteMudouSerializer;
 import com.example.petfriends_transporte.model.Expedicao;
 import com.example.petfriends_transporte.repository.ExpedicaoRepository;
-import com.example.petfriends_transporte.repository.TransportadoraRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;

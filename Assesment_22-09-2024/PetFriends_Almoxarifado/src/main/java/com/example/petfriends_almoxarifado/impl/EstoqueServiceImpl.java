@@ -1,10 +1,9 @@
 package com.example.petfriends_almoxarifado.impl;
 
-
 import com.example.petfriends_almoxarifado.exception.ResourseNotFoundException;
-import com.example.petfriends_almoxarifado.model.Produto;
-import com.example.petfriends_almoxarifado.repository.ProdutoRepository;
-import com.example.petfriends_almoxarifado.service.ProdutoService;
+import com.example.petfriends_almoxarifado.model.Estoque;
+import com.example.petfriends_almoxarifado.repository.EstoqueRepository;
+import com.example.petfriends_almoxarifado.service.EstoqueService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.support.converter.JacksonPubSubMessageConverter;
@@ -19,39 +18,39 @@ import java.util.Optional;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ProdutoServiceImpl implements ProdutoService {
+public class EstoqueServiceImpl implements EstoqueService {
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private EstoqueRepository estoqueRepository;
 
     @Autowired
-    private  PubSubTemplate pubSubTemplate;
+    private PubSubTemplate pubSubTemplate;
 
     @Autowired
     private JacksonPubSubMessageConverter converter;
 
     @Override
-    public List<Produto> lista(){
-        return produtoRepository.findAll();
+    public List<Estoque> lista(){
+        return estoqueRepository.findAll();
     }
 
     @Override
-    public Optional<Produto> produtoId(Integer id) {
+    public Optional<Estoque> estoqueId(Integer id) {
 
-        return produtoRepository.findById(id);
+        return estoqueRepository.findById(id);
     }
 
     @Override
-    public void salva(Produto produto) {
+    public void salva(Estoque estoque) {
 
 //
 //
         pubSubTemplate.setMessageConverter(converter);
-        pubSubTemplate.publish("topic-almoxarifado", produto);
-        log.info("***** Mensagem Publicada ---> " + produto);
+        pubSubTemplate.publish("topic-almoxarifado", estoque);
+        log.info("***** Mensagem Publicada ---> " + estoque);
 
 
-        produtoRepository.save(produto);
+        estoqueRepository.save(estoque);
     }
 
     @Override
@@ -59,20 +58,20 @@ public class ProdutoServiceImpl implements ProdutoService {
         if(resourceNotFound(id)){
             throw new ResourseNotFoundException("ID inexistente no delete");
         }
-        produtoRepository.deleteById(id);
+        estoqueRepository.deleteById(id);
     }
 
     private boolean resourceNotFound(Integer id) {
-        return produtoRepository.findAll().stream().filter(a -> a.getId() == id).findFirst().isEmpty();
+        return estoqueRepository.findAll().stream().filter(a -> a.getId() == id).findFirst().isEmpty();
     }
 
     @Override
-    public void atualiza(Integer id, Produto produto) throws JsonProcessingException {
+    public void atualiza(Integer id, Estoque estoque) throws JsonProcessingException {
         if(resourceNotFound(id)){
             throw new ResourseNotFoundException("ID inexistente na atualização");
         }
-        produto.setId(id);
-        produtoRepository.save(produto);
+        estoque.setId(id);
+        estoqueRepository.save(estoque);
 
     }
 }
